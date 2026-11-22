@@ -104,3 +104,58 @@ const navItems: {
     section: "MANAGE",
   },
 ];
+
+//Types
+
+type ProductRow= {
+    id: string;
+    title:string;
+    sku?:string|null;
+    brand?:string|null;
+    gtin?:string|null;
+    category?:string|null;
+    targetPrice?:string|number|null;
+    _count?:{
+        matches:number;
+    };
+};
+
+type SupplierRow={
+    id:string;
+    code:string;
+    name:string;
+    country?:string|null;
+    status:string;
+    isDemo:boolean;
+    _count?:{
+        offers: number;
+    };
+};
+
+type MatchRow={
+    id:string;
+    confidence:number;
+    matchType:string;
+    status: "SUGGESTED"|"APPROVED"|"REJECTED";
+    explanation?:string|null;
+
+    product: {
+        id:string;
+        title:string;
+        sku?:string|null;
+
+    };
+    supplierOffer: {
+        title:string;
+        pricr:string|number;
+        currency:string;
+        stockQty:number;
+        availability:string;
+
+        supplier: {
+            name:string;
+        };
+    };
+
+
+}
